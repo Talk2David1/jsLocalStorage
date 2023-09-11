@@ -202,20 +202,24 @@
 
      
 
-      deleteButton.addEventListener("click", function () {
-        table.deleteRow(row.rowIndex);
-        removeFromLocalStorage(rowId);
-      });
+//       const table = document.getElementById("myTable");
+// const deleteButton = document.getElementById("deleteButton");
 
-      function removeFromLocalStorage(rowId) {
-        const storageData = JSON.parse(localStorage.getItem("data"));
-        const tableData = storageData.tableData;
-        const updatedTableData = tableData.filter(
-          (data) => data.rowId !== rowId
-        );
-        storageData.tableData = updatedTableData;
-        localStorage.setItem("data", JSON.stringify(storageData));
-      }
+function removeFromLocalStorage(rowId) {
+  const storageData = JSON.parse(localStorage.getItem("data"));
+  const tableData = storageData.tableData;
+  const updatedTableData = tableData.filter((data) => data.rowId !== rowId);
+  storageData.tableData = updatedTableData;
+  localStorage.setItem("data", JSON.stringify(storageData));
+}
+
+deleteButton.addEventListener("click", function () {
+  const row = table.rows[table.rows.length - 1];
+  const rowId = row.getAttribute("data-row-id");
+  table.deleteRow(row.rowIndex);
+  removeFromLocalStorage(rowId);
+});
+
 
       function loadFromLocalStorage() {
         const storageData = JSON.parse(localStorage.getItem("data"));
