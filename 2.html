@@ -50,8 +50,10 @@
             <option value="5">Group 5</option>
             <option value="6">Group 6</option>
         </select><br><br>
-        <button type="button" id="addButton">Add</button>
+        <button type="button" id="addButton">Submit</button>
     </form>
+    <h3>Reserved List</h3>
+    <select id="reservedList" size="5"> 
     <label for="search">Search:</label>
     <input type="text" id="search" name="search">
     <button id="searchButton">Search</button>
@@ -64,7 +66,6 @@
             <th>Delete</th>
         </tr>
     </table>
-    <select id="reservedList" size="5">
         <!-- Reserved list dropdown options will be dynamically added here -->
     </select>
     <script>
@@ -90,7 +91,7 @@
                     imageSrc: imageSrc,
                     group: group
                 };
-                const addToReservedList = confirm("Add this user to Reserved List or Main List?");
+                const addToReservedList = confirm("Add this user to Reserved List?");
                 if (addToReservedList) {
                     addToReservedDropdown(data);
                 } else {
@@ -134,8 +135,8 @@
             const imageCell = document.createElement('td');
             const image = document.createElement('img');
             image.src = data.imageSrc;
-            image.width = 100;
-            image.height = 100;
+            image.width = 70;
+            image.height = 70;
             imageCell.appendChild(image);
             const groupCell = document.createElement('td');
             groupCell.innerText = data.group;
